@@ -1,0 +1,32 @@
+﻿<Window x:Class="CChessUI.LoadPgnDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:tools="clr-namespace:WpfTools.PersistentSettings;assembly=WpfTools"
+        Height="{tools:UserSettings}" Width="{tools:UserSettings}"
+        Title="LoadPgnDialog">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBox Grid.Column="0" Margin="5" Text="Paste PGN:" Focusable="False"/>
+        
+        <TextBox Grid.Column="1" Margin="5" MinWidth="200"
+                Text="{Binding Result}" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AcceptsReturn="True"/>
+        
+        <Button Grid.Column="2" Margin="5" Style="{StaticResource SimpleStyle}" Content="Load PGN..." Command="{Binding LoadPgnFileCommand}"/>
+        <Button Grid.Column="3" Margin="5" Style="{StaticResource SimpleStyle}" Content="Ok" Command="{Binding OkCommand}" />
+        <Button Grid.Column="4" Margin="5" Style="{StaticResource SimpleStyle}" Content="Cancel" IsCancel="True"/>
+        
+        <ListBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" ItemsSource="{Binding PgnGames}"
+                 ItemTemplate="{StaticResource GameInfo}" SelectedItem="{Binding SelectedGame}"/>
+    </Grid>
+</Window>

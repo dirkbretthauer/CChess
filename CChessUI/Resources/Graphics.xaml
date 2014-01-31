@@ -1,0 +1,214 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="RightArrowStyle" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border BorderThickness="0" Background="Transparent">
+                        <Grid>
+                                <Path x:Name="path" Data="M27.065922,13.3913 C27.627419,13.3913 28.189392,13.605975 28.619341,14.035324 L38.89011,24.307314 C38.991409,24.420713 39.032707,24.467314 39.072708,24.516714 39.186108,24.680714 39.220707,24.731314 39.248707,24.783314 39.272709,24.827312 39.294109,24.871313 39.316708,24.915314 39.406008,25.123313 39.418108,25.167312 39.431406,25.214013 39.450106,25.271312 39.467405,25.330012 39.480707,25.388713 39.491407,25.435313 39.496706,25.479312 39.504808,25.524713 39.512705,25.584613 39.522108,25.644711 39.524706,25.705913 39.530107,25.752612 39.527407,25.799312&#xd;&#xa;39.527407,25.845912 39.530107,25.904711 39.530107,25.963312 39.524706,26.022011 39.519407,26.069912 39.515406,26.118011 39.507307,26.167311 39.499407,26.223312 39.491407,26.280611 39.478006,26.336712 39.467405,26.384611 39.452806,26.431311 39.439405,26.478012 39.420706,26.536612 39.406008,26.594011 39.382008,26.650011 39.298107,26.83401 39.27541,26.88601 39.246109,26.93801 39.21801,26.987311 39.188709,27.03131 39.158108,27.076711 39.130108,27.119311&#xd;&#xa;39.100708,27.162011 39.070007,27.203311 39.032707,27.251311 38.991409,27.296611 38.952808,27.34061 L28.619341,37.684601 C28.188744,38.112598 27.630045,38.327301 27.067347,38.327301 26.504747,38.327301 25.944748,38.111301 25.51535,37.6819 24.658053,36.826 24.658053,35.436602 25.51535,34.579304 L32.043428,28.05271 11.720793,28.05271 C11.114096,28.05271 10.564797,27.80871 10.168799,27.41001 9.770139,27.01261 9.5247803,26.464712 9.5247804,25.859313 9.5247803,25.403312 9.6634499,24.982013 9.9007588,24.631313 10.294198,24.047314 10.963395,23.663314 11.720793,23.663314 L32.043428,23.663314 25.51535,17.136622 C24.658053,16.280621 24.658053,14.890023 25.51535,14.035324 25.943399,13.605975 26.504423,13.3913 27.065922,13.3913 z M25.861301,3.7813101 C13.6866,3.7813101 3.7800303,13.6866 3.7800303,25.86 3.7800303,38.0333 13.6866,47.939999 25.861301,47.939999 38.0333,47.939999 47.940002,38.0333 47.940002,25.86 47.940002,13.6866 38.0333,3.7813101 25.861301,3.7813101 z M25.8587,0 C40.140001,0 51.7188,11.5759 51.7188,25.8586 51.7188,40.139999 40.140001,51.7187 25.8587,51.7187 11.5774,51.7187 0,40.139999 0,25.8586 0,11.5759 11.5774,0 25.8587,0 z"
+                                  Fill="#FF000000" Stretch="Fill"/>
+                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True"/>
+                        <Trigger Property="IsDefaulted" Value="True"/>
+                        <Trigger Property="IsMouseOver" Value="True"/>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="path" Property="Fill" Value="White"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="path" Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style x:Key="LeftArrowStyle" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border BorderThickness="0" Background="Transparent">
+                        <Grid>
+                            <Path x:Name="path" Data="M27.065922,13.3913 C27.627419,13.3913 28.189392,13.605975 28.619341,14.035324 L38.89011,24.307314 C38.991409,24.420713 39.032707,24.467314 39.072708,24.516714 39.186108,24.680714 39.220707,24.731314 39.248707,24.783314 39.272709,24.827312 39.294109,24.871313 39.316708,24.915314 39.406008,25.123313 39.418108,25.167312 39.431406,25.214013 39.450106,25.271312 39.467405,25.330012 39.480707,25.388713 39.491407,25.435313 39.496706,25.479312 39.504808,25.524713 39.512705,25.584613 39.522108,25.644711 39.524706,25.705913 39.530107,25.752612 39.527407,25.799312&#xd;&#xa;39.527407,25.845912 39.530107,25.904711 39.530107,25.963312 39.524706,26.022011 39.519407,26.069912 39.515406,26.118011 39.507307,26.167311 39.499407,26.223312 39.491407,26.280611 39.478006,26.336712 39.467405,26.384611 39.452806,26.431311 39.439405,26.478012 39.420706,26.536612 39.406008,26.594011 39.382008,26.650011 39.298107,26.83401 39.27541,26.88601 39.246109,26.93801 39.21801,26.987311 39.188709,27.03131 39.158108,27.076711 39.130108,27.119311&#xd;&#xa;39.100708,27.162011 39.070007,27.203311 39.032707,27.251311 38.991409,27.296611 38.952808,27.34061 L28.619341,37.684601 C28.188744,38.112598 27.630045,38.327301 27.067347,38.327301 26.504747,38.327301 25.944748,38.111301 25.51535,37.6819 24.658053,36.826 24.658053,35.436602 25.51535,34.579304 L32.043428,28.05271 11.720793,28.05271 C11.114096,28.05271 10.564797,27.80871 10.168799,27.41001 9.770139,27.01261 9.5247803,26.464712 9.5247804,25.859313 9.5247803,25.403312 9.6634499,24.982013 9.9007588,24.631313 10.294198,24.047314 10.963395,23.663314 11.720793,23.663314 L32.043428,23.663314 25.51535,17.136622 C24.658053,16.280621 24.658053,14.890023 25.51535,14.035324 25.943399,13.605975 26.504423,13.3913 27.065922,13.3913 z M25.861301,3.7813101 C13.6866,3.7813101 3.7800303,13.6866 3.7800303,25.86 3.7800303,38.0333 13.6866,47.939999 25.861301,47.939999 38.0333,47.939999 47.940002,38.0333 47.940002,25.86 47.940002,13.6866 38.0333,3.7813101 25.861301,3.7813101 z M25.8587,0 C40.140001,0 51.7188,11.5759 51.7188,25.8586 51.7188,40.139999 40.140001,51.7187 25.8587,51.7187 11.5774,51.7187 0,40.139999 0,25.8586 0,11.5759 11.5774,0 25.8587,0 z"
+                              Fill="#FF000000" Stretch="Uniform" RenderTransformOrigin="0.5, 0.5">
+                                <Path.RenderTransform>
+                                    <RotateTransform Angle="180"/>
+                                </Path.RenderTransform>
+                            </Path>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True"/>
+                        <Trigger Property="IsDefaulted" Value="True"/>
+                        <Trigger Property="IsMouseOver" Value="True"/>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="path" Property="Fill" Value="White"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="path" Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="PlusStyle" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border BorderThickness="0" Background="Transparent">
+                        <Grid>
+                            <Path x:Name="path" Fill="Transparent" Stroke="Black" StrokeThickness="2" Stretch="Uniform">
+                                <Path.Data>
+                                    <GeometryGroup>
+                                        <LineGeometry StartPoint="10, 50" EndPoint="90,50"/>
+                                        <LineGeometry StartPoint="50, 10" EndPoint="50,90"/>
+                                        <EllipseGeometry Center="50, 50" RadiusX="50" RadiusY="50"/>
+                                    </GeometryGroup>
+                                </Path.Data>
+                            </Path>
+
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True"/>
+                        <Trigger Property="IsDefaulted" Value="True"/>
+                        <Trigger Property="IsMouseOver" Value="True"/>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="path" Property="Stroke" Value="White"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="path" Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="CrossStyle" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border BorderThickness="0" Background="Transparent">
+                        <Grid>
+                            <Path x:Name="path" Fill="Transparent" Stroke="Black" StrokeThickness="2" Stretch="Uniform">
+                                <Path.Data>
+                                    <GeometryGroup>
+                                        <LineGeometry StartPoint="25, 25" EndPoint="75,75"/>
+                                        <LineGeometry StartPoint="25, 75" EndPoint="75,25"/>
+                                        <EllipseGeometry Center="50, 50" RadiusX="50" RadiusY="50"/>
+                                    </GeometryGroup>
+                                </Path.Data>
+                            </Path>
+
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True"/>
+                        <Trigger Property="IsDefaulted" Value="True"/>
+                        <Trigger Property="IsMouseOver" Value="True"/>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="path" Property="Stroke" Value="White"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="path" Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="OkStyle" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border BorderThickness="0" Background="Transparent">
+                        <Grid>
+                            <Path x:Name="path" Fill="Transparent" Stroke="Black" StrokeThickness="2" Stretch="Uniform">
+                                <Path.Data>
+                                    <GeometryGroup>
+                                        <LineGeometry StartPoint="25, 50" EndPoint="50,75"/>
+                                        <LineGeometry StartPoint="50, 75" EndPoint="80,30"/>
+                                        <EllipseGeometry Center="50, 50" RadiusX="50" RadiusY="50"/>
+                                    </GeometryGroup>
+                                </Path.Data>
+                            </Path>
+
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True"/>
+                        <Trigger Property="IsDefaulted" Value="True"/>
+                        <Trigger Property="IsMouseOver" Value="True"/>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="path" Property="Stroke" Value="White"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="path" Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="SimpleStyle" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="1" Background="Transparent" Padding="5">
+                        <TextBlock x:Name="label" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                           Text="{TemplateBinding Content}"
+                           Foreground="Black"
+                           Background="Transparent"
+                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True"/>
+                        <Trigger Property="IsDefaulted" Value="True"/>
+                        <Trigger Property="IsMouseOver" Value="True"/>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="label" Property="Foreground" Value="White"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="label" Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="BorderStyle" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border" BorderBrush="Black" BorderThickness="1" CornerRadius="1" Background="Transparent" Padding="5">
+                        <ContentPresenter x:Name="content" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True"/>
+                        <Trigger Property="IsDefaulted" Value="True"/>
+                        <Trigger Property="IsMouseOver" Value="True"/>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="border" Property="BorderThickness" Value="2"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="content" Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A31C625F-AF05-48C7-B7EF-34C8B76FE78B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CChessCore</RootNamespace>
+    <AssemblyName>CChessCore</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ChessBoard.cs" />
+    <Compile Include="Fen.cs" />
+    <Compile Include="GameInfo.cs" />
+    <Compile Include="GameStatus.cs" />
+    <Compile Include="IMoveList.cs" />
+    <Compile Include="IPromotionProvider.cs" />
+    <Compile Include="MoveList.cs" />
+    <Compile Include="MoveListChangedEventArgs.cs" />
+    <Compile Include="BaseChessNotationParser.cs" />
+    <Compile Include="Pgn\PgnMove.cs" />
+    <Compile Include="Pgn\InitState.cs" />
+    <Compile Include="Pgn\MovesSectionState.cs" />
+    <Compile Include="Pgn\ParenthesisCommentState.cs" />
+    <Compile Include="Pgn\PgnGame.cs" />
+    <Compile Include="Pgn\PgnMoves.cs" />
+    <Compile Include="Pgn\PgnParser.cs" />
+    <Compile Include="Pgn\PgnParseResult.cs" />
+    <Compile Include="Pgn\PgnParserState.cs" />
+    <Compile Include="Pgn\PgnReader.cs" />
+    <Compile Include="Pgn\PgnReaderException.cs" />
+    <Compile Include="Pgn\PgnTag.cs" />
+    <Compile Include="Pgn\PgnToken.cs" />
+    <Compile Include="Pgn\RestOfLineCommentState.cs" />
+    <Compile Include="Pgn\TagSectionState.cs" />
+    <Compile Include="Pieces\Bishop.cs" />
+    <Compile Include="Pieces\IPiece.cs" />
+    <Compile Include="Pieces\King.cs" />
+    <Compile Include="Pieces\Knight.cs" />
+    <Compile Include="Pieces\PieceFactory.cs" />
+    <Compile Include="Pieces\Queen.cs" />
+    <Compile Include="Pieces\Rook.cs" />
+    <Compile Include="Players\Human.cs" />
+    <Compile Include="Players\IPlayer.cs" />
+    <Compile Include="RuleResult.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="IGameBoard.cs" />
+    <Compile Include="IGame.cs" />
+    <Compile Include="IGameRule.cs" />
+    <Compile Include="Pieces\PieceColor.cs" />
+    <Compile Include="PositionChangedEventArgs.cs" />
+    <Compile Include="Rules\DrawByRepetitionRule.cs" />
+    <Compile Include="Rules\FiftyMoveRule.cs" />
+    <Compile Include="Rules\KingHasMovedNoCastlingRule.cs" />
+    <Compile Include="Rules\KingInCheckRule.cs" />
+    <Compile Include="Square.cs" />
+    <Compile Include="Move.cs" />
+    <Compile Include="Pieces\Pawn.cs" />
+    <Compile Include="Pieces\PieceType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Utilities\Utilities.csproj">
+      <Project>{09C013ED-957A-404D-9182-53FAC0D92D6D}</Project>
+      <Name>Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
