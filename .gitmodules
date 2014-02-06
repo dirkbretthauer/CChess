@@ -1,3 +1,6 @@
 [submodule "WpfTools"]
 	path = WpfTools
 	url = https://github.com/dirkbretthauer/WpfTools.git
+[submodule "PgnReader"]
+	path = PgnReader
+	url = https://github.com/dirkbretthauer/PgnReader.git
