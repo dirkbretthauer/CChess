@@ -1,0 +1,3 @@
+[submodule "WpfTools"]
+	path = WpfTools
+	url = https://github.com/dirkbretthauer/WpfTools.git
