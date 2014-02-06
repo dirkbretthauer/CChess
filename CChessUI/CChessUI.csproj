@@ -45,12 +45,11 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.0.0-beta1\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.0.0-beta1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Prism.4.1.0.0\lib\NET40\Microsoft.Expression.Interactions.dll</HintPath>
@@ -69,9 +68,6 @@
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity">
-      <HintPath>..\..\3rdParty\Prism\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -235,8 +231,12 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\WpfTools\source\WpfTools\WpfTools\WpfTools.csproj">
-      <Project>{8481586D-2338-472F-9B39-54DCB775B23E}</Project>
+    <ProjectReference Include="..\..\PgnReader\PgnReader\PgnReader.csproj">
+      <Project>{d1006074-e54b-4f12-808a-378bffc16686}</Project>
+      <Name>PgnReader</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WpfTools\WpfTools\WpfTools.csproj">
+      <Project>{8481586d-2338-472f-9b39-54dcb775b23e}</Project>
       <Name>WpfTools</Name>
     </ProjectReference>
     <ProjectReference Include="..\CChessCore\CChessCore.csproj">
@@ -246,10 +246,6 @@
     <ProjectReference Include="..\CChessDatabase\CChessDatabase.csproj">
       <Project>{de22eb45-9958-4f1b-937a-bb6ea3b84b47}</Project>
       <Name>CChessDatabase</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Utilities\Utilities.csproj">
-      <Project>{09C013ED-957A-404D-9182-53FAC0D92D6D}</Project>
-      <Name>Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

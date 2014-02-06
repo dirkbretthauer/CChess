@@ -27,7 +27,6 @@ using CChessDatabase;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.ViewModel;
 using Microsoft.Win32;
-using Utilities;
 using WpfTools.Dialogs;
 
 namespace CChessUI.Tools

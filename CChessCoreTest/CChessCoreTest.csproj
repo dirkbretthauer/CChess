@@ -19,6 +19,8 @@
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
     <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,7 +44,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Moq">
-      <HintPath>..\..\3rdParty\Moq\Moq.dll</HintPath>
+      <HintPath>..\packages\Moq.4.2.1312.1622\lib\net40\Moq.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -66,17 +68,20 @@
     <Compile Include="SquareTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\PgnReader\PgnReader\PgnReader.csproj">
+      <Project>{d1006074-e54b-4f12-808a-378bffc16686}</Project>
+      <Name>PgnReader</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CChessCore\CChessCore.csproj">
       <Project>{A31C625F-AF05-48C7-B7EF-34C8B76FE78B}</Project>
       <Name>CChessCore</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Utilities\Utilities.csproj">
-      <Project>{09C013ED-957A-404D-9182-53FAC0D92D6D}</Project>
-      <Name>Utilities</Name>
-    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

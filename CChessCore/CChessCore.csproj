@@ -56,21 +56,7 @@
     <Compile Include="MoveList.cs" />
     <Compile Include="MoveListChangedEventArgs.cs" />
     <Compile Include="BaseChessNotationParser.cs" />
-    <Compile Include="Pgn\PgnMove.cs" />
-    <Compile Include="Pgn\InitState.cs" />
-    <Compile Include="Pgn\MovesSectionState.cs" />
-    <Compile Include="Pgn\ParenthesisCommentState.cs" />
-    <Compile Include="Pgn\PgnGame.cs" />
-    <Compile Include="Pgn\PgnMoves.cs" />
-    <Compile Include="Pgn\PgnParser.cs" />
-    <Compile Include="Pgn\PgnParseResult.cs" />
-    <Compile Include="Pgn\PgnParserState.cs" />
-    <Compile Include="Pgn\PgnReader.cs" />
-    <Compile Include="Pgn\PgnReaderException.cs" />
-    <Compile Include="Pgn\PgnTag.cs" />
-    <Compile Include="Pgn\PgnToken.cs" />
-    <Compile Include="Pgn\RestOfLineCommentState.cs" />
-    <Compile Include="Pgn\TagSectionState.cs" />
+    <Compile Include="PgnParser.cs" />
     <Compile Include="Pieces\Bishop.cs" />
     <Compile Include="Pieces\IPiece.cs" />
     <Compile Include="Pieces\King.cs" />
@@ -96,11 +82,13 @@
     <Compile Include="Pieces\Pawn.cs" />
     <Compile Include="Pieces\PieceType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\ArgumentGuard.cs" />
+    <Compile Include="Utilities\EventRaiser.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Utilities\Utilities.csproj">
-      <Project>{09C013ED-957A-404D-9182-53FAC0D92D6D}</Project>
-      <Name>Utilities</Name>
+    <ProjectReference Include="..\..\PgnReader\PgnReader\PgnReader.csproj">
+      <Project>{d1006074-e54b-4f12-808a-378bffc16686}</Project>
+      <Name>PgnReader</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

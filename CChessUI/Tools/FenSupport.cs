@@ -22,7 +22,6 @@ using System.Windows.Input;
 using CChessCore;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.ViewModel;
-using Utilities;
 using WpfTools.Dialogs;
 
 namespace CChessUI.Tools

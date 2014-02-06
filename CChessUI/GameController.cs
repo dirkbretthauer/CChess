@@ -23,7 +23,6 @@ using System.Linq;
 using System.Text;
 using CChessCore;
 using CChessCore.Rules;
-using Utilities;
 
 namespace CChessUI
 {
