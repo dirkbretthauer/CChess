@@ -61,9 +61,9 @@ namespace CChessCore
         {
             _currentGame = Game.CreateChessGame();
             
-            foreach (var move in game.Moves.Moves)
+            foreach (var move in game.Moves)
             {
-                DoMove(move.Move);
+                DoMove(move);
                 _currentGame.AddComment(_currentGame.Movelist.CurrentHalfMoveNumber, move.Comment);
             }
 
@@ -72,7 +72,7 @@ namespace CChessCore
             return _currentGame;
         }
 
-        public PgnMoves GetMoves()
+        public IList<PgnMove> GetMoves()
         {
             _reader.ReadGame();
             return _reader.CurrentGame.Moves;
@@ -122,9 +122,9 @@ namespace CChessCore
         {
             _currentGame = Game.CreateChessGame();
             _reader.ReadGame();
-            foreach (var move in _reader.CurrentGame.Moves.Moves)
+            foreach (var move in _reader.CurrentGame.Moves)
             {
-                DoMove(move.Move);
+                DoMove(move);
                 _currentGame.AddComment(_currentGame.Movelist.CurrentHalfMoveNumber, move.Comment);
             }
 

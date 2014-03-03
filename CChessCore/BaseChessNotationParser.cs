@@ -40,64 +40,65 @@ namespace CChessCore
 
         public abstract IGame GetGame();
 
-        protected virtual void DoMove(string pgnMove)
+        protected virtual void DoMove(PgnMove move)
         {
             PieceType promotionTo = null;
+            var moveString = move.Move;
 
-            if(pgnMove.EndsWith(Move.CheckNotation) ||
-                pgnMove.EndsWith(Move.CheckMateNotation))
+            if(moveString.EndsWith(Move.CheckNotation) ||
+                moveString.EndsWith(Move.CheckMateNotation))
             {
-                pgnMove = pgnMove.Substring(0, pgnMove.Length - 1);
+                moveString = moveString.Substring(0, moveString.Length - 1);
             }
 
-            if (pgnMove.Contains(Move.PromotionNotation))
+            if (moveString.Contains(Move.PromotionNotation))
             {
-                var temp = pgnMove.Split('=');
-                pgnMove = temp[0];
+                var temp = moveString.Split('=');
+                moveString = temp[0];
                 promotionTo = PieceType.GetPieceType(temp[1].Substring(0,1));
             }
 
-            if(pgnMove.Length == 2) //then its a normal pawn move
+            if(moveString.Length == 2) //then its a normal pawn move
             {
-                TryMove(PieceType.Pawn, pgnMove);
+                TryMove(PieceType.Pawn, moveString);
             }
-            else if (pgnMove.Length == 3 && _pieceLetters.Contains(pgnMove[0]))
+            else if (moveString.Length == 3 && _pieceLetters.Contains(moveString[0]))
             {
-                TryMove(GetPieceType(pgnMove[0]), pgnMove.Substring(1));
+                TryMove(GetPieceType(moveString[0]), moveString.Substring(1));
             }
-            else if (pgnMove.Length == 4 &&
-                _pieceLetters.Contains(pgnMove[0]) &&
-                pgnMove.Contains(Move.CaptureNotation))
+            else if (moveString.Length == 4 &&
+                _pieceLetters.Contains(moveString[0]) &&
+                moveString.Contains(Move.CaptureNotation))
             {
-                TryMove(GetPieceType(pgnMove[0]), pgnMove.Substring(2));
+                TryMove(GetPieceType(moveString[0]), moveString.Substring(2));
             }
-            else if (pgnMove.Length == 4 &&
-                !_pieceLetters.Contains(pgnMove[0]) &&
-                pgnMove.Contains(Move.CaptureNotation))
+            else if (moveString.Length == 4 &&
+                !_pieceLetters.Contains(moveString[0]) &&
+                moveString.Contains(Move.CaptureNotation))
             {
-                Square to = pgnMove.Substring(2);
+                Square to = moveString.Substring(2);
 
-                TryMoveWithAmbiguity(PieceType.Pawn, to, pgnMove[0], promotionTo);
+                TryMoveWithAmbiguity(PieceType.Pawn, to, moveString[0], promotionTo);
             }
-            else if (pgnMove.Length == 4 &&
-                _pieceLetters.Contains(pgnMove[0]) &&
-                !pgnMove.Contains(Move.CaptureNotation))
+            else if (moveString.Length == 4 &&
+                _pieceLetters.Contains(moveString[0]) &&
+                !moveString.Contains(Move.CaptureNotation))
             {
-                Square to = pgnMove.Substring(2);
-                var pieceType = GetPieceType(pgnMove[0]);
+                Square to = moveString.Substring(2);
+                var pieceType = GetPieceType(moveString[0]);
 
-                TryMoveWithAmbiguity(pieceType, to, pgnMove[1], promotionTo);
+                TryMoveWithAmbiguity(pieceType, to, moveString[1], promotionTo);
             }
-            else if (pgnMove.Length == 5 &&
-                _pieceLetters.Contains(pgnMove[0]) &&
-                pgnMove.Contains(Move.CaptureNotation))
+            else if (moveString.Length == 5 &&
+                _pieceLetters.Contains(moveString[0]) &&
+                moveString.Contains(Move.CaptureNotation))
             {
-                Square to = pgnMove.Substring(3);
-                var pieceType = GetPieceType(pgnMove[0]);
+                Square to = moveString.Substring(3);
+                var pieceType = GetPieceType(moveString[0]);
 
-                TryMoveWithAmbiguity(PieceType.Pawn, to, pgnMove[1], promotionTo);
+                TryMoveWithAmbiguity(PieceType.Pawn, to, moveString[1], promotionTo);
             }
-            else if(Move.ShortCastleNotation.Equals(pgnMove.ToUpper()))
+            else if(Move.ShortCastleNotation.Equals(moveString.ToUpper()))
             {
                 if (_currentGame.Status.Turn == PieceColor.White)
                 {
@@ -108,7 +109,7 @@ namespace CChessCore
                     _currentGame.TryMove("e8", "g8");
                 }
             }
-            else if(Move.LongCastleNotation.Equals(pgnMove.ToUpper()))
+            else if(Move.LongCastleNotation.Equals(moveString.ToUpper()))
             {
                 if (_currentGame.Status.Turn == PieceColor.White)
                 {
@@ -137,8 +138,9 @@ namespace CChessCore
             return false;
         }
 
-        private void TryMoveWithAmbiguity(PieceType pieceType, Square to, char ambiguity, PieceType promotionTo = null)
+        private bool TryMoveWithAmbiguity(PieceType pieceType, Square to, char ambiguity, PieceType promotionTo = null)
         {
+            bool result = false;
             var pieces = _currentGame.Board.Where(x => x.Item2.Type == pieceType &&
                                                x.Item2.Color == _currentGame.Status.Turn);
 
@@ -150,14 +152,17 @@ namespace CChessCore
                 var move = new Move(piece.Item1, to);
                 if (piece.Item2.CanMove(_currentGame, _currentGame.Board.Copy(), move))
                 {
-                    _currentGame.TryMove(move.From, move.To, promotionTo);
+                    result = _currentGame.TryMove(move.From, move.To, promotionTo);
                     break;
                 }
             }
+
+            return result;
         }
 
-        private void TryMove(PieceType pieceType, Square to)
+        private bool TryMove(PieceType pieceType, Square to)
         {
+            bool result = false;
             var pieces = _currentGame.Board.Where(x => x.Item2.Type == pieceType &&
                                                x.Item2.Color == _currentGame.Status.Turn);
 
@@ -166,10 +171,12 @@ namespace CChessCore
                 var move = new Move(piece.Item1, to);
                 if (piece.Item2.CanMove(_currentGame, _currentGame.Board.Copy(), move))
                 {
-                    _currentGame.TryMove(move.From, move.To);
+                    result = _currentGame.TryMove(move.From, move.To);
                     break;
                 }
             }
+
+            return result;
         }
 
         // maps "1-0", "0-1", "1/2-1/2", "*" to a Result

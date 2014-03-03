@@ -85,7 +85,7 @@ namespace CChessDatabase
             var g = new Game();
             var gameInfo = new PgnParser().GetGameInfo(game);
 
-            g.PgnMoves = game.Moves.MoveSection;
+            g.PgnMoves = game.MoveSection;
 
             g.Result = gameInfo.Result;
             g.White.Name = gameInfo.White;

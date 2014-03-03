@@ -50,9 +50,9 @@ namespace CChessDatabase
             var reader = new PgnParser();
             reader.Load(_game.PgnMoves);
             
-            foreach (var move in reader.GetMoves().Moves)
+            foreach (var move in reader.GetMoves())
             {
-                DoMove(move.Move);
+                DoMove(move);
                 _currentGame.AddComment(_currentGame.Movelist.CurrentHalfMoveNumber, move.Comment);
             }
 
