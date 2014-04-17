@@ -101,11 +101,6 @@ namespace CChessCore
                 appendix += CheckMateNotation;
             }
 
-            if(!string.IsNullOrWhiteSpace(Comment))
-            {
-                appendix += " " + Comment;
-            }
-
             if(PieceCaptured != null)
             {
                 if (PieceMoved is Pawn)

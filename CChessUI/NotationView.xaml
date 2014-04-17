@@ -32,7 +32,7 @@
         </Grid>
         
         <ListBox Grid.Row="1" ItemsSource="{Binding MoveList}" Style="{StaticResource NotationBox}"
-                 SelectedItem="{Binding SelectedMove}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 SelectedItem="{Binding SelectedMove}"
                  Background="White" KeyboardNavigation.TabNavigation="Continue">
         </ListBox>
         <TextBlock Grid.Row="2" Text="{Binding Result}" Background="White"/>
