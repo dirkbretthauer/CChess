@@ -124,8 +124,11 @@ namespace CChessCore
             _reader.ReadGame();
             foreach (var move in _reader.CurrentGame.Moves)
             {
-                DoMove(move);
-                _currentGame.AddComment(_currentGame.Movelist.CurrentHalfMoveNumber, move.Comment);
+                var convertedMove = DoMove(move);
+                if(convertedMove != null)
+                {
+                    convertedMove.Comment = move.Comment;
+                }
             }
 
             _currentGame.Info = GetGameInfo(_reader.CurrentGame);

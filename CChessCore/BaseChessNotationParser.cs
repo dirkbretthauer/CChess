@@ -40,8 +40,9 @@ namespace CChessCore
 
         public abstract IGame GetGame();
 
-        protected virtual void DoMove(PgnMove move)
+        protected virtual Move DoMove(PgnMove move)
         {
+            bool success = false;
             PieceType promotionTo = null;
             var moveString = move.Move;
 
@@ -60,17 +61,17 @@ namespace CChessCore
 
             if(moveString.Length == 2) //then its a normal pawn move
             {
-                TryMove(PieceType.Pawn, moveString);
+                success = TryMove(PieceType.Pawn, moveString);
             }
             else if (moveString.Length == 3 && _pieceLetters.Contains(moveString[0]))
             {
-                TryMove(GetPieceType(moveString[0]), moveString.Substring(1));
+                success = TryMove(GetPieceType(moveString[0]), moveString.Substring(1));
             }
             else if (moveString.Length == 4 &&
                 _pieceLetters.Contains(moveString[0]) &&
                 moveString.Contains(Move.CaptureNotation))
             {
-                TryMove(GetPieceType(moveString[0]), moveString.Substring(2));
+                success = TryMove(GetPieceType(moveString[0]), moveString.Substring(2));
             }
             else if (moveString.Length == 4 &&
                 !_pieceLetters.Contains(moveString[0]) &&
@@ -78,7 +79,7 @@ namespace CChessCore
             {
                 Square to = moveString.Substring(2);
 
-                TryMoveWithAmbiguity(PieceType.Pawn, to, moveString[0], promotionTo);
+                success = TryMoveWithAmbiguity(PieceType.Pawn, to, moveString[0], promotionTo);
             }
             else if (moveString.Length == 4 &&
                 _pieceLetters.Contains(moveString[0]) &&
@@ -87,7 +88,7 @@ namespace CChessCore
                 Square to = moveString.Substring(2);
                 var pieceType = GetPieceType(moveString[0]);
 
-                TryMoveWithAmbiguity(pieceType, to, moveString[1], promotionTo);
+                success = TryMoveWithAmbiguity(pieceType, to, moveString[1], promotionTo);
             }
             else if (moveString.Length == 5 &&
                 _pieceLetters.Contains(moveString[0]) &&
@@ -96,29 +97,38 @@ namespace CChessCore
                 Square to = moveString.Substring(3);
                 var pieceType = GetPieceType(moveString[0]);
 
-                TryMoveWithAmbiguity(PieceType.Pawn, to, moveString[1], promotionTo);
+                success = TryMoveWithAmbiguity(PieceType.Pawn, to, moveString[1], promotionTo);
             }
             else if(Move.ShortCastleNotation.Equals(moveString.ToUpper()))
             {
                 if (_currentGame.Status.Turn == PieceColor.White)
                 {
-                    _currentGame.TryMove("e1", "g1");
+                    success = _currentGame.TryMove("e1", "g1");
                 }
                 else
                 {
-                    _currentGame.TryMove("e8", "g8");
+                    success = _currentGame.TryMove("e8", "g8");
                 }
             }
             else if(Move.LongCastleNotation.Equals(moveString.ToUpper()))
             {
                 if (_currentGame.Status.Turn == PieceColor.White)
                 {
-                    _currentGame.TryMove("e1", "c1");
+                    success = _currentGame.TryMove("e1", "c1");
                 }
                 else
                 {
-                    _currentGame.TryMove("e8", "c8");
+                    success = _currentGame.TryMove("e8", "c8");
                 }
+            }
+
+            if(success)
+            {
+                return _currentGame.Movelist.LastMove;
+            }
+            else
+            {
+                return null;
             }
         }
 
