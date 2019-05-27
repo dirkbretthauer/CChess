@@ -27,14 +27,13 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using CChessCore;
 using CChessDatabase;
-using Microsoft.Practices.Prism.Commands;
-using Microsoft.Practices.Prism.ViewModel;
+using Prism.Commands;
+using Prism.Mvvm;
 using WpfTools.Dialogs;
 
 namespace CChessUI.Tools
 {
-    [Export(typeof(ITool))]
-    public class SaveToDatabaseSupport : NotificationObject, ITool, IDialogViewModel
+    public class SaveToDatabaseSupport : BindableBase, ITool, IDialogViewModel
     {
         private readonly IGameController _gameController;
         private readonly IDialogService _dialogService;
@@ -54,8 +53,7 @@ namespace CChessUI.Tools
             get { return _white; }
             set
             {
-                _white = value;
-                RaisePropertyChanged(() => White);
+                SetProperty(ref _white, value);
             }
         }
 
@@ -64,8 +62,7 @@ namespace CChessUI.Tools
             get { return _black; }
             set
             {
-                _black = value;
-                RaisePropertyChanged(() => Black);
+                SetProperty(ref _black, value);
             }
         }
 
@@ -74,8 +71,7 @@ namespace CChessUI.Tools
             get { return _event; }
             set
             {
-                _event = value;
-                RaisePropertyChanged(() => Event);
+                SetProperty(ref _event, value);
             }
         }
 

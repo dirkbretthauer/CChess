@@ -18,11 +18,11 @@
 #endregion
 
 using CChessCore;
-using Microsoft.Practices.Prism.ViewModel;
+using Prism.Mvvm;
 
 namespace CChessUI.ViewModels
 {
-    public class MoveViewModel : NotificationObject
+    public class MoveViewModel : BindableBase
     {
         private bool _isWhiteMove;
         private readonly Move _move;
@@ -32,11 +32,7 @@ namespace CChessUI.ViewModels
             get { return _isWhiteMove; }
             set
             {
-                if(_isWhiteMove != value)
-                {
-                    _isWhiteMove = value;
-                    RaisePropertyChanged(() => IsWhiteMove);
-                }
+                SetProperty(ref _isWhiteMove, value);
             }
         }
 

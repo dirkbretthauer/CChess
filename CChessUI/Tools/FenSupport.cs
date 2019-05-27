@@ -20,14 +20,13 @@ using System;
 using System.ComponentModel.Composition;
 using System.Windows.Input;
 using CChessCore;
-using Microsoft.Practices.Prism.Commands;
-using Microsoft.Practices.Prism.ViewModel;
+using Prism.Commands;
+using Prism.Mvvm;
 using WpfTools.Dialogs;
 
 namespace CChessUI.Tools
 {
-    [Export(typeof(ITool))]
-    public class FenSupport : NotificationObject, ITool, IDialogViewModel
+    public class FenSupport : BindableBase, ITool, IDialogViewModel
     {
         private string _fenOfBoard;
         private readonly IDialogService _dialogService;
@@ -40,8 +39,7 @@ namespace CChessUI.Tools
             get { return _fenOfBoard; }
             set
             {
-                _fenOfBoard = value;
-                RaisePropertyChanged(() => FenOfBoard);
+                SetProperty(ref _fenOfBoard, value);
             }
         }
 
@@ -59,7 +57,6 @@ namespace CChessUI.Tools
         /// </summary>
         /// <param name="gameController">The game controller.</param>
         /// <param name="dialogService">The dialog service.</param>
-        [ImportingConstructor]
         public FenSupport(IGameController gameController, IDialogService dialogService)
         {
             Command = new DelegateCommand(OnLoadFenExcecuted);

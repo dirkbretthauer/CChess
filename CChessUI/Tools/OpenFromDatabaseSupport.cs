@@ -24,15 +24,14 @@ using System.Windows.Input;
 using CChessCore;
 using CChessCore.Pgn;
 using CChessDatabase;
-using Microsoft.Practices.Prism.Commands;
-using Microsoft.Practices.Prism.ViewModel;
 using Microsoft.Win32;
+using Prism.Commands;
+using Prism.Mvvm;
 using WpfTools.Dialogs;
 
 namespace CChessUI.Tools
 {
-    [Export(typeof(ITool))]
-    public class OpenFromDatabaseSupport : NotificationObject, ITool, IDialogViewModel
+    public class OpenFromDatabaseSupport : BindableBase, ITool, IDialogViewModel
     {
         private readonly IGameController _gameController;
         private readonly IDialogService _dialogService;
@@ -56,8 +55,7 @@ namespace CChessUI.Tools
             get { return _selectedGame; }
             set
             {
-                _selectedGame = value;
-                RaisePropertyChanged(() => SelectedGame);
+                SetProperty(ref _selectedGame, value);
             }
         }
 
@@ -70,7 +68,6 @@ namespace CChessUI.Tools
         /// <param name="gameController">The game controller.</param>
         /// <param name="databaseContext">The database context.</param>
         /// <param name="dialogService">The dialog service.</param>
-        [ImportingConstructor]
         public OpenFromDatabaseSupport(IGameController gameController,
                           ICChessDatabaseService databaseContext,
                           IDialogService dialogService)

@@ -33,7 +33,6 @@ namespace CChessCore
         public static string GetFen(IGame game, bool onlyPosition)
         {
             string output = String.Empty;
-            string spacer = "";
             byte blankSquares = 0;
 
             for (int y = 7; y >= 0; y--)

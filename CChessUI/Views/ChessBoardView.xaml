@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="CChessUI.Views.ChessBoardView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        xmlns:CChessUI="clr-namespace:CChessUI"
+        xmlns:Controls="clr-namespace:CChessUI.Controls"
+        xmlns:DragDrop="clr-namespace:WpfTools.DragDrop;assembly=WpfTools">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Controls:ChessBoardItemsControl Grid.Row="0" ItemContainerStyle="{StaticResource ChessBoardItem}" ItemsSource="{Binding Pieces}">
+            <Controls:ChessBoardItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Controls:ChessBoardPanel WhiteSquareColor="{Binding WhiteSquareColor}" BlackSquareColor="{Binding BlackSquareColor}" ShowCoordinates="True"
+                                              DragDrop:DragDropManager.DragSourceAdvisor="{Binding DragDropHandler}"
+                                              DragDrop:DragDropManager.DropTargetAdvisor="{Binding DragDropHandler}"
+                                              DragDrop:DragDropManager.DragDropTemplate="{StaticResource PieceDragTemplate}"/>
+                </ItemsPanelTemplate>
+            </Controls:ChessBoardItemsControl.ItemsPanel>
+        </Controls:ChessBoardItemsControl>
+    </Grid>
+</UserControl>

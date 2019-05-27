@@ -37,7 +37,6 @@ namespace CChessCore
         void ClearBoard();
 
         event EventHandler<PositionChangedEventArgs> PositionChanged;
-        event EventHandler BoardChanged;
 
         bool IsMutable { get; }
         IGameBoard Copy();

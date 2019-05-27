@@ -18,46 +18,49 @@
 #endregion
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows.Input;
 using CChessCore;
-using Prism.Common;
+using CChessCore.Pgn;
+using CChessDatabase;
+using Prism.Commands;
 using Prism.Mvvm;
+using WpfTools.Dialogs;
 
 namespace CChessUI.ViewModels
 {
-    public class ChessPieceViewModel : BindableBase
+    public class ChessToolbarViewModel : BindableBase
     {
-        private Square _position;
-        private IPiece _piece;
+        private readonly IGameController _gameController;
+        private readonly ICChessDatabaseService _databaseContext;
+        
+        public ICommand NewGameCommand { get; private set; }
 
-        public Square Position
+        public IEnumerable<ITool> Tools { get; private set; }
+
+        public ChessToolbarViewModel(IGameController gameController,
+                                     ICChessDatabaseService databaseContext,
+                                     IEnumerable<ITool> tools)
         {
-            get { return _position; }
-            set
-            {
-                SetProperty(ref _position, value);
-            }
+            _gameController = gameController;
+            _databaseContext = databaseContext;
+            Tools = tools;
+
+            NewGameCommand = new DelegateCommand(OnNewGameExecuted);
+
+            //_databaseContext.Load();
         }
 
-        public IPiece Piece
+        private void OnSaveGameDialogClosed(IDialogViewModel model, bool? dialogResult, object state)
         {
-            get { return _piece;}
-            set
-            {
-                SetProperty(ref _piece, value);
-            }
+            _databaseContext.Save(_gameController.Game);
         }
 
-
-        public ChessPieceViewModel()
+        private void OnNewGameExecuted()
         {
-            
-        }
-
-        public ChessPieceViewModel(IPiece piece)
-        {
-            _piece = piece;
+            _gameController.StartNewGame();
         }
     }
 }

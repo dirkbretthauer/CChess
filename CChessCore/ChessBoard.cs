@@ -69,9 +69,6 @@ namespace CChessCore
             return board;
         }
 
-        #region events
-        public event EventHandler BoardChanged;
-
         public void ClearBoard()
         {
             for (int y = 0; y < 8; y++)
@@ -84,7 +81,6 @@ namespace CChessCore
         }
 
         public event EventHandler<PositionChangedEventArgs> PositionChanged;
-        #endregion
 
         public ChessBoard()
         {
